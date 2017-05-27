@@ -37,6 +37,7 @@
 #include <QMetaEnum>
 #include <QVariant>
 #include <QDebug>
+#include "ircmessagedecoder_p.h"
 
 IRC_BEGIN_NAMESPACE
 

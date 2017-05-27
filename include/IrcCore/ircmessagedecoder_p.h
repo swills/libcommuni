@@ -35,6 +35,8 @@
 
 IRC_BEGIN_NAMESPACE
 
+IRC_CORE_EXPORT bool irc_is_supported_encoding(const QByteArray& encoding);
+
 class IrcMessageDecoder
 {
 public:

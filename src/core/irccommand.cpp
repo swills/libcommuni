@@ -28,6 +28,7 @@
 
 #include "irccommand.h"
 #include "irccommand_p.h"
+#include "ircmessagedecoder_p.h"
 #include "ircconnection.h"
 #include "ircmessage.h"
 #include <QTextCodec>

@@ -37,7 +37,7 @@ extern "C" {
 
 IRC_BEGIN_NAMESPACE
 
-IRC_CORE_EXPORT bool irc_is_supported_encoding(const QByteArray& encoding)
+bool irc_is_supported_encoding(const QByteArray& encoding)
 {
     static QSet<QByteArray> codecs = QTextCodec::availableCodecs().toSet();
     return codecs.contains(encoding);

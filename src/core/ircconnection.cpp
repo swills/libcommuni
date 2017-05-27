@@ -51,6 +51,7 @@
 #endif // QT_NO_SSL
 #include <QDataStream>
 #include <QVariantMap>
+#include "ircmessagedecoder_p.h"
 
 IRC_BEGIN_NAMESPACE
 
