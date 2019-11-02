@@ -314,7 +314,7 @@ void IrcProtocolPrivate::handleCapabilityMessage(IrcCapabilityMessage* msg)
                         QStringList capParts = cap.split('=');
                         if (capParts.length() == 2) {
                             QStringList serverSaslMethods = capParts[1].split(',');
-                            if (serverSalsMethods.contains(connection->saslMechanism())) {
+                            if (serverSaslMethods.contains(connection->saslMechanism())) {
                                 requestedCaps += QLatin1String("sasl");
                             }
                         } else {
