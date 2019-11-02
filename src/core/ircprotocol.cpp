@@ -306,8 +306,24 @@ void IrcProtocolPrivate::handleCapabilityMessage(IrcCapabilityMessage* msg)
             }
             const QStringList params = msg->parameters();
             if (params.value(params.count() - 1) != QLatin1String("*")) {
-                if (!connection->saslMechanism().isEmpty() && availableCaps.contains(QLatin1String("sasl")))
-                    requestedCaps += QLatin1String("sasl");
+                if (!connection->saslMechanism().isEmpty()) {
+                    // CAP LS 302 enables servers to send sasl in the format of sasl=...
+                    // this means we can't do a simple "contains" check.
+                    // we also get to check which sasl mechanisms the server allow and only request sasl cap if it supports our mechanism
+                    foreach (const QString& cap, availableCaps) {
+                        QStringList capParts = cap.split('=');
+                        if (capParts.length() == 2) {
+                            QStringList serverSaslMethods = capParts[1].split(',');
+                            if (serverSalsMethods.contains(connection->saslMechanism())) {
+                                requestedCaps += QLatin1String("sasl");
+                            }
+                        } else {
+                            if (cap.compare(QLatin1String("sasl"), Qt::CaseInsensitive) == 0) {
+                                requestedCaps += QLatin1String("sasl");
+                            }
+                        }
+                    }
+                }
             }
             if (!requestedCaps.isEmpty())
                 connection->sendRaw("CAP REQ :" + QStringList(requestedCaps.toList()).join(" "));
