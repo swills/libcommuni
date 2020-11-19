@@ -29,7 +29,7 @@ PRIV_HEADERS += $$INCDIR/ircchannel_p.h
 PRIV_HEADERS += $$INCDIR/ircuser_p.h
 PRIV_HEADERS += $$INCDIR/ircusermodel_p.h
 
-HEADERS += $$PUB_HEADERS
+#HEADERS += $$PUB_HEADERS
 HEADERS += $$PRIV_HEADERS
 
 SOURCES += $$PWD/ircbuffer.cpp
